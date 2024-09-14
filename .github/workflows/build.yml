@@ -37,7 +37,9 @@ jobs:
           python-version: '3.11'
       - name: Setup env
         run: |
-
+          pwd
+          mkdir -p ./platform/debug
+          mkdir -p ./platform/debug/gen
           cp dependencies/dbg_patcher/main_xbox.hdr platform/debug/gen/main_xbox.hdr
           truncate -s 13068128 platform/wii/sys/main.dol
           truncate -s 22353239 platform/debug/gen/main_xbox_0.ark
@@ -64,5 +66,4 @@ jobs:
         with:
           name: DC3DX-Debug
           path: out/debug
-          #          mkdir platform/debug
-          #mkdir platform/debug/gen
+          #          
