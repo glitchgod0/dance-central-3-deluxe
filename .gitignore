@@ -1,30 +1,13 @@
+#funny files that should never be committed
 .DS_Store
 *.pyc
 *.tmp
 *.ninja
 .ninja_log
 
-main_xbox
-patch_xbox
-project_files
-magick
-_xenia
+#input for wii files for build
+platform/debug
 
-main_xbox_9.ark
-main_xbox_8.ark
-main_xbox_7.ark
-main_xbox_6.ark
-main_xbox_5.ark
-main_xbox_4.ark
-main_xbox_3.ark
-main_xbox_2.ark
-main_xbox_1.ark
-main_xbox_0.ark
-main_xbox.hdr
-patch_xbox_0.ark
-patch_xbox.hdr
-
-dx.dta
-
+#ninja build dirs
 obj
 out
