@@ -41,7 +41,6 @@ jobs:
           mkdir -p ./platform/debug
           mkdir -p ./platform/debug/gen
           cp dependencies/dbg_patcher/main_xbox.hdr platform/debug/gen/main_xbox.hdr
-          truncate -s 13068128 platform/wii/sys/main.dol
           truncate -s 22353239 platform/debug/gen/main_xbox_0.ark
           truncate -s 5721833 platform/debug/gen/main_xbox_1.ark
           truncate -s 24584681 platform/debug/gen/main_xbox_2.ark
