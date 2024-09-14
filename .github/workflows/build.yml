@@ -37,8 +37,8 @@ jobs:
           python-version: '3.11'
       - name: Setup env
         run: |
-          mkdir platform/debug
-          mkdir platform/debug/gen
+          mkdir ./platform/debug
+          mkdir ./platform/debug/gen
           cp dependencies/dbg_patcher/main_xbox.hdr platform/debug/gen/main_xbox.hdr
           truncate -s 13068128 platform/wii/sys/main.dol
           truncate -s 22353239 platform/debug/gen/main_xbox_0.ark
