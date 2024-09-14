@@ -9,7 +9,7 @@ game_name = "Dance Central 3 Deluxe"
 
 ninja = ninja_syntax.Writer(open("build.ninja", "w+"))
 
-#versions 
+#versions
 #gh1, gh2 - " "
 #rb1, track packs - "-v 4"
 #rb2, tbrb, gdrb - "-v 5"
@@ -62,6 +62,9 @@ if args.fun:
 
 
 gen_folder = "gen"
+#Debug cant run patch arks
+if args.platform == "debug":
+    patchcreator = True
 
 ninja.variable("dtb_encrypt", dtb_encrypt)
 ninja.variable("ark_encrypt", ark_encrypt)
@@ -71,7 +74,7 @@ ninja.variable("miloVersion", miloVersion)
 if new_gen == True:
     hdr_name = hdr_name + "_" + args.platform
 
-if args.platform not in ["xbox"]:
+if args.platform not in ["xbox", "debug"]:
     print("Unsupported platform. Only 'xbox' is supported.")
     sys.exit()
 
@@ -115,9 +118,9 @@ match sys.platform:
 
 #specify output directories per platform
 match args.platform:
-    case "xbox":
+    case "xbox" | "debug":
         out_dir = Path("out", args.platform, gen_folder)
-
+     
 #building an ark
 if patchcreator == False:
     ninja.rule(
@@ -135,11 +138,11 @@ if patchcreator == True:
     hdr_name = "main"
     #append platform if this is new style ark
     if new_gen == True:
-        hdr_name = hdr_name + "_" + args.platform
+        hdr_name = hdr_name + "_" + "xbox"
     #this is fucking hilarious
     exec_path = "README.md"
     match args.platform:
-        case "xbox":
+        case "debug":
             hdr_path = "platform/" + args.platform + "/" + gen_folder + "/" + hdr_name + ".hdr"
     ninja.rule(
         "ark",
@@ -171,7 +174,7 @@ def ark_file_filter(file: Path):
         return False
     if file.suffix.endswith("_ps3") and args.platform != "ps3":
         return False
-    if file.suffix.endswith("_xbox") and args.platform != "xbox":
+    if file.suffix.endswith("_xbox") and args.platform not in ("xbox", "debug"):
         return False
     if file.suffix.endswith("_wii") and args.platform != "wii":
         return False
@@ -194,7 +197,7 @@ for f in filter(ark_file_filter, Path("_ark").rglob("*")):
                 *f.parent.parts[1:]
             )
             match args.platform:
-                case "xbox":
+                case "xbox" | "debug":
                     target_filename = Path(gen_folder, f.stem + ".png_xbox")
                     xbox_directory = Path("obj", args.platform, "ark").joinpath(
                         *f.parent.parts[1:]
@@ -260,7 +263,7 @@ ark_part = "0"
 if patchcreator == True:
     ark_part = new_ark_part
 match args.platform:
-    case "xbox":
+    case "xbox" | "debug":
         hdr = str(Path("out", args.platform, hdr_name + ".hdr"))
         ark = str(Path("out", args.platform, hdr_name + "_" + ark_part + ".ark"))
 ninja.build(
