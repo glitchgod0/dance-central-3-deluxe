@@ -41,16 +41,16 @@ jobs:
           mkdir -p ./platform/debug
           mkdir -p ./platform/debug/gen
           cp dependencies/dbg_patcher/main_xbox.hdr platform/debug/gen/main_xbox.hdr
-          truncate -s 22353239 platform/debug/gen/main_xbox_0.ark
-          truncate -s 5721833 platform/debug/gen/main_xbox_1.ark
-          truncate -s 24584681 platform/debug/gen/main_xbox_2.ark
-          truncate -s 266057007 platform/debug/gen/main_xbox_3.ark
-          truncate -s 688887924 platform/debug/gen/main_xbox_4.ark
-          truncate -s 107950925 platform/debug/gen/main_xbox_5.ark
-          truncate -s 468328063 platform/debug/gen/main_xbox_6.ark
-          truncate -s 22352016 platform/debug/gen/main_xbox_7.ark
-          truncate -s 1983799220 platform/debug/gen/main_xbox_8.ark
-          truncate -s 300667016 platform/debug/gen/main_xbox_9.ark
+          truncate -s 983887302 platform/debug/gen/main_xbox_0.ark
+          truncate -s 6076 platform/debug/gen/main_xbox_1.ark
+          truncate -s 129700 platform/debug/gen/main_xbox_2.ark
+          truncate -s 99268 platform/debug/gen/main_xbox_3.ark
+          truncate -s 184768 platform/debug/gen/main_xbox_4.ark
+          truncate -s 1486752 platform/debug/gen/main_xbox_5.ark
+          truncate -s 1149852 platform/debug/gen/main_xbox_6.ark
+          truncate -s 752536 platform/debug/gen/main_xbox_7.ark
+          truncate -s 600404 platform/debug/gen/main_xbox_8.ark
+          truncate -s 1064524 platform/debug/gen/main_xbox_9.ark
       - name: Build ARK
         run: |
           chmod +x dependencies/python/configure_build.py
